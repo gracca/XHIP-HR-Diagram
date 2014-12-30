@@ -19,9 +19,9 @@ http://cdsads.u-strasbg.fr/abs/2012AstL...38..331A
 import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
-from matplotlib.ticker import MultipleLocator
 from astropy.table import Table
 from astroquery.vizier import Vizier
+
 
 def get_vizier_data():
     """Seleccionamos del catálogo XHIP valores no nulos de:
@@ -38,6 +38,7 @@ def get_vizier_data():
     mv = result[0]['VMag'].data.data
     return lc, bv, mv
 
+
 def count_lum_class(lc):
     """Clasificamos las estrellas en clase de luminosidad.
     Codificación de VizieR:
@@ -50,23 +51,28 @@ def count_lum_class(lc):
         num = np.append(num, lum.count(i))
     return num
 
+
 def plot_hr_diagram(bvlist, mvlist, lclist, colors):
     """Graficamos el diagrama HR.
     Magnitud absoluta Mv vs. índice de color B-V.
     """
-    fig = plt.figure(figsize=(7, 8))
+    fig = plt.figure(figsize=(9, 8))
     ax = fig.add_subplot(111)
     for x, y, l, c in zip(bvlist, mvlist, lclist, colors):
-        ax.scatter(x, y, c=c, s=20, label=l)
-    ax.set_xlabel(r'$\mathrm{(B-V)}$', fontsize=16)
-    ax.set_ylabel(r'$\mathrm{M_V}$', fontsize=16)
+        ax.scatter(x, y, c=c, s=30, label=l, alpha=0.5, edgecolors='none')
+    ax.set_xlabel(r'$\mathregular{(B-V)}$', fontsize=16)
+    ax.set_ylabel(r'$\mathregular{M_V}$', fontsize=16)
     ax.set_xlim(-1, 4)
-    ax.set_ylim(16, -8)
-    ax.yaxis.set_major_locator(MultipleLocator(2))
-    ax.legend()
+    ax.invert_yaxis()
+    ax.grid(ls='-', c='gray', alpha=0.5)
+    ax.legend(markerscale=1.25, fancybox=True, shadow=True)
+    bbox_props = dict(boxstyle='round', fc='w', ec='0.5', alpha=0.9)
+    ax.text(1.5, 17, 'Diagrama de Hertszprung-Russell', ha='center',
+            va='center', size=20, bbox=bbox_props)
     plt.tight_layout()
     plt.show()
     return 0
+
 
 def main():
     # Tabla con el número de estrellas por clase de luminosidad
@@ -82,10 +88,9 @@ def main():
     mvlist = [mv[lc == i] for i in np.arange(1, 7)]
     lclist = ['Clase I', 'Clase II', 'Clase III',
               'Clase IV', 'Clase V', 'Clase VI']
-    colors = ['black', 'yellow', 'green', 'brown', 'blue', 'red']
+    colors = ['black', 'yellow', 'green', 'orange', 'blue', 'red']
     plot_hr_diagram(bvlist, mvlist, lclist, colors)
 
 
 if __name__ == '__main__':
     main()
-

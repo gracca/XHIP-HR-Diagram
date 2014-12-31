@@ -15,3 +15,24 @@ In order to run the Python script to generate the HR diagram below, the followin
 * [Astroquery](https://pypi.python.org/pypi/astroquery)
 
 <img class="center" src="xhip-hr-diagram.png" width="600" height="533" title="HR Diagram from XHIP data" >
+
+The script also prints the number of stars per luminosity class and per spectral type:
+
+| Lc   |  Num    |
+| ----:| -------:|
+| I    | 234.0   |
+| II   | 873.0   |
+| III  | 12022.0 |
+| IV   | 5447.0  |
+| V    | 23988.0 |
+| VI   | 14.0    |
+
+| SpT |  Num    |
+| ---:| -------:|
+| O   | 22.0    |
+| B   | 3495.0  |
+| A   | 6766.0  |
+| F   | 11961.0 |
+| G   | 9399.0  |
+| K   | 9613.0  |
+| M   | 1309.0  |

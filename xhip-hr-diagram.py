@@ -28,10 +28,12 @@ def get_vizier_data():
     - Lc (clase de luminosidad)
     - B-V (índice de color)
     - VMag (magnitud absoluta visual)
+    - SpType (tipo espectral)
     """
     v = Vizier(columns=['Lc', 'B-V', 'VMag', 'SpType'],
-               column_filters={'Lc': '!=', 'B-V': '!=', 'VMag': '!=',
-               'SpType': '!='},
+               column_filters={'Lc': '!=', 'B-V': '!=',
+                               'VMag': '!=', 'SpType': '!='
+                               },
                row_limit=-1)
     result = v.query_constraints(catalog='V/137D')
     lc = result[0]['Lc'].data.data

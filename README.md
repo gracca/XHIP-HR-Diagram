@@ -16,7 +16,7 @@ In order to run the Python script to generate the HR diagram below, the followin
 
 <img class="center" src="xhip-hr-diagram.png" width="600" height="533" title="HR Diagram from XHIP data" >
 
-The script also prints the number of stars per luminosity class and per spectral type:
+The script also prints the number of stars per luminosity class:
 
 | Lc   |  Num    |
 | ----:| -------:|
@@ -26,6 +26,8 @@ The script also prints the number of stars per luminosity class and per spectral
 | IV   | 5447.0  |
 | V    | 23988.0 |
 | VI   | 14.0    |
+
+and per spectral type:
 
 | SpT |  Num    |
 | ---:| -------:|

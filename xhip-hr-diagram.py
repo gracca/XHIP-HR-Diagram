@@ -17,7 +17,6 @@ http://cdsads.u-strasbg.fr/abs/2012AstL...38..331A
 """
 
 import numpy as np
-import matplotlib as mpl
 import matplotlib.pyplot as plt
 from astropy.table import Table
 from astroquery.vizier import Vizier
@@ -69,8 +68,8 @@ def count_sp_type(sp):
 
 
 def plot_hr_diagram(bvlist, mvlist, lclist, colors):
-    """Graficamos el diagrama HR.
-    Magnitud absoluta Mv vs. índice de color B-V.
+    """Graficamos el diagrama HR:
+    Magnitud absoluta Mv vs. índice de color B-V
     """
     fig = plt.figure(figsize=(9, 8))
     ax = fig.add_subplot(111)

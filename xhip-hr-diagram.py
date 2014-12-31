@@ -29,14 +29,16 @@ def get_vizier_data():
     - B-V (índice de color)
     - VMag (magnitud absoluta visual)
     """
-    v = Vizier(columns=['Lc', 'B-V', 'VMag'],
-               column_filters={'Lc': '!=', 'B-V': '!=', 'VMag': '!='},
+    v = Vizier(columns=['Lc', 'B-V', 'VMag', 'SpType'],
+               column_filters={'Lc': '!=', 'B-V': '!=', 'VMag': '!=',
+               'SpType': '!='},
                row_limit=-1)
     result = v.query_constraints(catalog='V/137D')
     lc = result[0]['Lc'].data.data
     bv = result[0]['B-V'].data.data
     mv = result[0]['VMag'].data.data
-    return lc, bv, mv
+    sp = result[0]['SpType'].data.data
+    return lc, bv, mv, sp
 
 
 def count_lum_class(lc):
@@ -50,6 +52,18 @@ def count_lum_class(lc):
     for i in cls:
         num = np.append(num, lum.count(i))
     return num
+
+
+def count_sp_type(sp):
+    """Clasificamos las estrellas según el tipo espectral MK:
+    O, B, A, F, G, K y M
+    """
+    spt = ['O', 'B', 'A', 'F', 'G', 'K', 'M']
+    spl = [i[:1] for i in sp.tolist()]
+    num = []
+    for i in spt:
+        num = np.append(num, spl.count(i))
+    return num, spt
 
 
 def plot_hr_diagram(bvlist, mvlist, lclist, colors):
@@ -75,11 +89,19 @@ def plot_hr_diagram(bvlist, mvlist, lclist, colors):
 
 
 def main():
+    # Generamos los datos
+    lc, bv, mv, sp = get_vizier_data()
+
     # Tabla con el número de estrellas por clase de luminosidad
-    lc, bv, mv = get_vizier_data()
     n = count_lum_class(lc)
     l = ['I', 'II', 'III', 'IV', 'V', 'VI']
     t = Table([l, n], names=('Lc', 'Num'))
+    print(t)
+    print('')
+
+    # Tabla con el número de estrellas por tipo espectral
+    n, s = count_sp_type(sp)
+    t = Table([s, n], names=('SpT', 'Num'))
     print(t)
 
     # Graficamos el diagrama HR:

@@ -1,7 +1,5 @@
-XHIP-HR-Diagram
-===============
-
 HR Diagram constructed from XHIP data
+=================================
 
 The Extended Hipparcos Compilation (XHIP<sup>1</sup>) is a dataset of all stars based on the *Hipparcos, the New Reduction of the Raw Data*<sup>2</sup>, which largely improved the astrometry over the original Hipparcos<sup>3</sup> catalog.
 
@@ -9,3 +7,11 @@ The Extended Hipparcos Compilation (XHIP<sup>1</sup>) is a dataset of all stars 
 2. van Leeuwen F. 2007, A&A, 474, 653
 3. ESA 1997, The Hipparcos and Tycho Catalogs, ESA-SP 1200
 
+In order to run the Python script to generate the HR diagram below, the following packages are required:
+
+* [NumPy](http://www.numpy.org)
+* [Matplotlib](http://matplotlib.org)
+* [Astropy](http://astropy.org)
+* [Astroquery](https://pypi.python.org/pypi/astroquery)
+
+<img class="center" src="xhip-hr-diagram.png" width="600" height="533" title="HR Diagram from XHIP data" >

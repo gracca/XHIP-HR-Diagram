@@ -1,6 +1,8 @@
 HR Diagram constructed from XHIP data
 =================================
 
+[![Code Health](https://landscape.io/github/gracca/XHIP-HR-Diagram/master/landscape.svg)](https://landscape.io/github/gracca/XHIP-HR-Diagram/master)
+
 The Extended Hipparcos Compilation (XHIP<sup>1</sup>) is a dataset of all stars based on the *Hipparcos, the New Reduction of the Raw Data*<sup>2</sup>, which largely improved the astrometry over the original Hipparcos<sup>3</sup> catalog.
 
 1. Anderson, E., & Francis, C. 2012, AstL, 38, 331
